@@ -1,0 +1,67 @@
+import Vue from 'vue'
+import vuex from 'vuex'
+
+
+Vue.use(vuex)
+
+export default new vuex.Store({
+    state: {
+        msgNew:"Text will be change after 3s and 5s on condition based!!",
+        count:0,
+        userStore : [
+            {
+                name : 'Akash ',
+                id : '1',
+                emailid : 'akash@gmail.com'
+            },
+            {
+                name : 'Paras ',
+                id : '2',
+                emailid : 'paras@gmail.com'
+            },
+            {
+                name : 'piyush',
+                id : '3',
+                emailid : 'piyush@gmail.com'
+            }
+        ]
+    },
+    actions: {
+        actionWork({commit}){
+           setTimeout(() => {
+                commit('increment')
+           }, 8000);
+        },
+        actionWorkSecond({commit}){
+            setTimeout(() => {
+                commit('decrement')
+               }, 2000);
+            }
+        },
+    mutations: {
+        pushEle(state,payload){
+            state.userStore.push(payload)
+        },
+        increment(state){
+            state.msgNew = 'DATA COMES FROM ACTION'
+        },
+        aboutButton(state){
+            state.msgNew ="about button"
+        },
+        increments(state){
+            setTimeout(function(){
+               alert("4")
+                state.msgNew = 'Error value'
+                alert("3")
+            },5000)
+            alert("5")
+        },
+        decrement(state){
+            state.msgNew = 'hello decrement value'
+        },
+        countcall(state,payload){
+            state.count += payload
+        }
+    }
+})
+
