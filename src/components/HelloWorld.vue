@@ -20,29 +20,29 @@ export default {
 	  }
   },
   beforeCreate () {
-    console.log('BeforeCreated LifeCycle called')
+  
   },
   created () {
-    console.log('Created lifecycle called')
+   
   },
   beforeMount () {
-    console.log('BeforeMounted Lifecycle called')
+    
   },
   mounted () {
-    console.log('Mounted lifecycle called')
+   
   },
   beforeUpdate () {
-    console.log('Before Update called')
+    
   },
   updated () {
     this.msg = 'hhh'
-    console.log('update called')
+   
   },
   beforeDestroy () {
-    console.log('Before destroy called')
+    
   },
   destroyed () {
-    console.log('destroy called')
+
   }
 }
 </script>

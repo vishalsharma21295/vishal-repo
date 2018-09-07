@@ -5,6 +5,10 @@ import App from './App'
 import router from './router'
 import vuex from 'vuex'
 import store from './Store'
+import VueSocketio from 'vue-socket.io';
+import socketio from 'socket.io-client';
+
+Vue.use(VueSocketio, socketio('http://localhost:3000'), store);
 
 Vue.config.productionTip = false
 Vue.use(vuex)
