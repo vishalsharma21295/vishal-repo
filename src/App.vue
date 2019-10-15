@@ -89,7 +89,7 @@ export default {
 		}
 	},
 	socket : {
-		connect : function() {
+		connection : function() {
 			console.log("socket server is connected")
 		},
 		customEvents : function(data) {
@@ -127,30 +127,39 @@ export default {
 		// this.actionWork();
 	},
 	mounted :function(){
-		this.$socket.on('customEvent',(data)=>{
-			this.msgData=data
-			var set = {name:"JUSTICE LEAGUE",id:"5"};
-			this.msgData.push(set)
-			var self = this
-			for(var i=0 ; i< self.msgData.length; i++){
-				this.jsonobject[this.msgData[i].id]= this.msgData[i].name
-			}
-			console.log(this.jsonobject)
-		})
-		this.$socket.on('connects',(data)=>{
-			// this.msgData.push(data)
-			console.log("ddddd>>>>>")
-			this.jsonobject[data.id] = data.name
+		// this.$socket.on('customEvent',(data)=>{
+		// 	this.msgData=data
+		// 	var set = {name:"JUSTICE LEAGUE",id:"5"};
+		// 	this.msgData.push(set)
+		// 	var self = this
+		// 	for(var i=0 ; i< self.msgData.length; i++){
+		// 		this.jsonobject[this.msgData[i].id]= this.msgData[i].name
+		// 	}
+		// 	console.log(this.jsonobject)
+		// })
+		// this.$socket.on('connects',(data)=>{
+		// 	// this.msgData.push(data)
+		// 	console.log("ddddd>>>>>")
+		// 	this.jsonobject[data.id] = data.name
 			
+		// })
+
+		
+		this.$socket.emit('notification_on' ,{"notification_on": true ,"x-access-token" : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.eyJJRCI6NCwiaWQiOjQsImVtYWlsIjoicG9vcnZhLnNoYXJtYUBpbmRpcXVzLmNvbSIsInBhcmVudF9hY2NvdW50X2lkIjo0LCJhY2NvdW50X3R5cGUiOjEsImFjY291bnRfcHJlZml4IjoiQVBJLUUiLCJyZXNlbGxlcklkIjoiTlVMTCIsInByb2ZpbGVJZCI6ImFwaWN1bHVzIiwicGF0aE5hbWUiOiJOVUxMIiwiZmlyc3RfbmFtZSI6IlBvb3J2YSIsImxhc3RfbmFtZSI6IlNoYXJtYSIsInJvbGVzIjpbIlVTRVJfTUFTVEVSIl0sImFjY291bnRfc3RhdGUiOjE3LCJncm91cHMiOlsiVVNFUl9NQVNURVIiXSwiaW1wZXJzb25hdGlvbiI6ZmFsc2UsImlhdCI6MTU1ODUxNjI1NCwiZXhwIjoxNTU4NjAyNjU0LCJhdWQiOiJJbmRpUWxvdWQgY2xpZW50cyIsImlzcyI6IkluZGlRbG91ZCBBdXRoIHNlcnZpY2UiLCJzdWIiOiJJbmRpUWxvdWQgSWRlbnRpdHkgaW5mbyJ9.pkmLxNCr1tnG4qhuBnRZH5WAbxieI0barpCZGz3b1By65tz3pztAgGbpeAoBGtA0ewy-iUMbB3gnAVSE2dRv-5At2Wi60Q3oGe27QfpHE9Z4QBLlepVSs_VpLKRaskvDgBDWfjXuZ7h2kfuDIDG0x3-w8bCj7tnGoEAF2FjlGbKIta01HR-FFrVjtj693e3Kchk4r55lc5fvpkwOPszE0-OtGKA2AvQvkHFB_4d7oMEyG-wZUYQVhi9XqCcfkOsVw3Ms-N-p8wUH-z0O16fiiKCIhXVTjlDH70JnoDGUrBkrf7twW1A7_ZVf1RNTAoLg9-xNaKyViub46bG9BPowiA' }  )
+
+		console.log('signal emitted')
+
+		this.$socket.on('notification', (data) => {
+			console.log('hellllo, ', data)
 		})
-		this.$socket.on('workEvent',(data)=>{
-				this.jsonobject[data.id] = data.name
-				console.log(this.jsonobject)
-		})
-		this.$socket.on('pushEvent', (data)=>{
-			console.log(">>>>>")
-			this.jsonobject[data.id] = data.name
-			console.log(this.jsonobject)
+		// this.$socket.on('workEvent',(data)=>{
+		// 		this.jsonobject[data.id] = data.name
+		// 		console.log(this.jsonobject)
+		// })
+		// this.$socket.on('pushEvent', (data)=>{
+		// 	console.log(">>>>>")
+		// 	this.jsonobject[data.id] = data.name
+		// 	console.log(this.jsonobject)
 			// this.msgData.filter((item, index) => {
 			// 	if(item.id == data.id){ 
 			// 		var indexs = this.msgData.indexOf(item)
@@ -159,8 +168,8 @@ export default {
 			// 		console.log("<<<<<<<<",this.msgData)
 			// 	}
 			// })
-		})
-		this.actionWork(this.msgData);
+		// })
+		// this.actionWork(this.msgData);
 	},
 	methods : {
 		customE(){
