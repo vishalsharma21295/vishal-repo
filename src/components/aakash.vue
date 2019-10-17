@@ -34,13 +34,13 @@ export default {
     },
     methods:{
         eventBuzz(){
-            var payload = this.user;
+            var payload = this.user
             var akshEvent = this.akash
             // alert(payload)
-            EventBus.$emit('eventBuzzButton',akshEvent);
+            EventBus.$emit('eventBuzzButton',akshEvent)
         },
         actionWork() {
-            this.$store.commit('increment');
+            this.$store.commit('increment')
         }
     },
     created () {
